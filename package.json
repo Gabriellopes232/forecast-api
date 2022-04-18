@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "yarn build && node dist/src/index.js",
+    "start": "node dist/src/index.js",
     "test": "yarn test:unit && yarn test:functional",
     "start:local": "ts-node-dev --transpile-only src/index.ts",
     "lint": "eslint ./src ./test --ext .ts",
@@ -41,7 +41,8 @@
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
-    "mongoose": "^6.1.4"
+    "mongoose": "^6.1.4",
+    "node": "^17.7.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
