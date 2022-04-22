@@ -9,6 +9,7 @@ export function apiErrorValidator(
   error: HTTPError,
   _: Partial<Request>,
   res: Response,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   __: NextFunction
 ): void {
   const errorCode = error.status || 500;
