@@ -29,9 +29,13 @@
   },
   "homepage": "https://github.com/Gabriellopes232/forecast-api#readme",
   "dependencies": {
+    "@overnightjs/core": "^1.7.6",
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
     "module-alias": "^2.2.2"
   },
   "devDependencies": {
+    "@types/express": "^4.17.13",
     "@types/jest": "^27.0.3",
     "@types/module-alias": "^2.0.1",
     "@types/node": "16",
