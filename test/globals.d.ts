@@ -3,8 +3,8 @@
  * that don't have NodeJS as a global type
  */
 declare global {
-    //eslint-disable-next-line no-var
-    var testRequest: import("supertest").SuperTest<import("supertest").Test>;
+  //eslint-disable-next-line no-var
+  var testRequest: import('supertest').SuperTest<import('supertest').Test>;
 }
 
 export { };
