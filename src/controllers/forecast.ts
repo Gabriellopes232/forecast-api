@@ -1,5 +1,5 @@
-import { Controller, Get } from '@overnightjs/core';
-import { Request, Response } from 'express';
+import { Controller, Get } from '@overnightjs/core'
+import { Request, Response } from 'express'
 
 @Controller('forecast')
 export class ForecastController {
