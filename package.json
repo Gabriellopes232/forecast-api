@@ -35,7 +35,7 @@
     "@overnightjs/core": "^1.7.6",
     "@types/express": "^4.17.13",
     "axios": "^0.27.2",
-    "body-parser": "^1.19.1",
+    "body-parser": "^1.20.1",
     "config": "^3.3.7",
     "express": "^4.17.2",
     "module-alias": "^2.2.2",
@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/body-parser": "^1.19.2",
     "@types/config": "^3.3.0",
     "@types/jest": "^27.0.3",
     "@types/module-alias": "^2.0.1",
