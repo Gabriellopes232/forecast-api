@@ -25,12 +25,12 @@
     "typescript",
     "api"
   ],
-  "author": "Waldemar Neto",
+  "author": "Gabriel Lopes do Nascimento",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/waldemarnt/node-typescript-api/issues"
+    "url": "https://github.com/Gabriellopes232/forecast-api/issues"
   },
-  "homepage": "https://github.com/waldemarnt/node-typescript-api#readme",
+  "homepage": "https://github.com/Gabriellopes232/forecast-api#readme",
   "dependencies": {
     "@overnightjs/core": "^1.7.6",
     "@types/express": "^4.17.14",
