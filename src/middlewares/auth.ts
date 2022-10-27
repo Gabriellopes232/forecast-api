@@ -1,4 +1,4 @@
-import { Response, NextFunction, Request } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import AuthService from '@src/services/auth';
 
 export function authMiddleware(
