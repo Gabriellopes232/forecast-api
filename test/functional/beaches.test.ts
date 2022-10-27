@@ -3,21 +3,21 @@ import { User } from '@src/models/user';
 import AuthService from '@src/services/auth';
 
 describe('Beaches functional tests', () => {
-  beforeAll(async () => await Beach.deleteMany({}));
-  describe('When creating a new beach', () => {
-    const defaultUser = {
-      name: 'John Doe',
-      email: 'john2@mail.com',
-      password: '1234',
-    };
+  const defaultUser = {
+    name: 'John Doe',
+    email: 'john2@mail.com',
+    password: '1234',
+  };
 
-    let token: string;
-    beforeEach(async () => {
-      await Beach.deleteMany({});
-      await User.deleteMany({});
-      const user = await new User(defaultUser).save();
-      token = AuthService.generateToken(user.toJSON());
-    });
+  let token: string;
+  beforeEach(async () => {
+    await Beach.deleteMany({});
+    await User.deleteMany({});
+    const user = await new User(defaultUser).save();
+    token = AuthService.generateToken(user.toJSON());
+  });
+
+  describe('When creating a new beach', () => {
     it('should create a beach with success', async () => {
       const newBeach = {
         lat: -33.792726,

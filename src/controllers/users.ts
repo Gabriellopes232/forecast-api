@@ -1,8 +1,8 @@
 import { Controller, Post } from '@overnightjs/core';
 import { Response, Request } from 'express';
 import { User } from '@src/models/user';
-import { BaseController } from './index';
 import AuthService from '@src/services/auth';
+import { BaseController } from './index';
 
 @Controller('users')
 export class UsersController extends BaseController {
@@ -16,6 +16,7 @@ export class UsersController extends BaseController {
       this.sendCreateUpdateErrorResponse(res, error);
     }
   }
+
   @Post('authenticate')
   public async authenticate(req: Request, res: Response): Promise<Response> {
     const user = await User.findOne({ email: req.body.email });

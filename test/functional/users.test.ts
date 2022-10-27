@@ -2,14 +2,16 @@ import { User } from '@src/models/user';
 import AuthService from '@src/services/auth';
 
 describe('Users functional tests', () => {
-  describe('When creating new user', () => {
-    it('should successfully create a new user', async () => {
+  beforeEach(async () => {
+    await User.deleteMany({});
+  });
+  describe('When creating a new user', () => {
+    it('should successfully create a new user with encrypted password', async () => {
       const newUser = {
         name: 'John Doe',
         email: 'john@mail.com',
         password: '1234',
       };
-
       const response = await global.testRequest.post('/users').send(newUser);
       expect(response.status).toBe(201);
       await expect(
@@ -22,18 +24,21 @@ describe('Users functional tests', () => {
         })
       );
     });
-    it('should return 422 when there is a validation error', async () => {
+
+    it('Should return 422 when there is a validation error', async () => {
       const newUser = {
         email: 'john@mail.com',
         password: '1234',
       };
       const response = await global.testRequest.post('/users').send(newUser);
+
       expect(response.status).toBe(422);
       expect(response.body).toEqual({
         code: 422,
         error: 'User validation failed: name: Path `name` is required.',
       });
     });
+
     it('Should return 409 when the email already exists', async () => {
       const newUser = {
         name: 'John Doe',
@@ -50,7 +55,8 @@ describe('Users functional tests', () => {
       });
     });
   });
-  describe('When authenticating a user', () => {
+
+  describe('when authenticating a user', () => {
     it('should generate a token for a valid user', async () => {
       const newUser = {
         name: 'John Doe',
