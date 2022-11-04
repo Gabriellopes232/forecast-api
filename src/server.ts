@@ -7,6 +7,7 @@ import * as database from '@src/database';
 import { BeachesController } from './controllers/beaches';
 import { UsersController } from './controllers/users';
 import logger from './logger';
+import cors from 'cors';
 
 export class SetupServer extends Server {
   /*
@@ -29,8 +30,13 @@ export class SetupServer extends Server {
 
   private setupExpress(): void {
     this.app.use(bodyParser.json());
-    this.setupControllers();
+    this.app.use(
+      cors({
+        origin: '*',
+      })
+    );
   }
+
 
   private setupControllers(): void {
     const forecastController = new ForecastController();
