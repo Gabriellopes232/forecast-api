@@ -10,10 +10,17 @@ export abstract class BaseController {
       const clientErrors = this.handleClientErrors(error);
       res
         .status(clientErrors.code)
-        .send(ApiError.format({ code: clientErrors.code, message: clientErrors.error }));
+        .send(
+          ApiError.format({
+            code: clientErrors.code,
+            message: clientErrors.error,
+          })
+        );
     } else {
       logger.error(error);
-      res.status(500).send(ApiError.format({ code: 500, message: 'Something went wrong!' }));
+      res
+        .status(500)
+        .send(ApiError.format({ code: 500, message: 'Something went wrong!' }));
     }
   }
 
@@ -32,6 +39,6 @@ export abstract class BaseController {
     return { code: 422, error: error.message };
   }
   protected sendErrorResponse(res: Response, apiError: APIError): Response {
-    return res.status(apiError.code).send(ApiError.format(apiError))
+    return res.status(apiError.code).send(ApiError.format(apiError));
   }
 }
