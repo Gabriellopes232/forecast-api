@@ -1,4 +1,9 @@
-import { Controller, Post, ClassMiddleware, Middleware } from '@overnightjs/core';
+import {
+  Controller,
+  Post,
+  ClassMiddleware,
+  Middleware,
+} from '@overnightjs/core';
 import { Request, Response } from 'express';
 import { Beach } from '@src/models/beach';
 import { authMiddleware } from '@src/middlewares/auth';
@@ -13,14 +18,12 @@ const rateLimiter = rateLimit({
     return req.ip;
   },
   handler(_, res: Response): void {
-    res
-      .status(429)
-      .send(
-        ApiError.format({
-          code: 429,
-          message: 'Too many requests to the /beaches endpoint',
-        })
-      );
+    res.status(429).send(
+      ApiError.format({
+        code: 429,
+        message: 'Too many requests to the /beaches endpoint',
+      })
+    );
   },
 });
 
