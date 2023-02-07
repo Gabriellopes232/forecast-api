@@ -1,11 +1,11 @@
-import _ from 'lodash'
+import _ from 'lodash';
 import { StormGlass, ForecastPoint } from '@src/clients/stormGlass';
 import { InternalError } from '@src/util/errors/internal-error';
 import { Beach } from '@src/models/beach';
 import logger from '@src/logger';
 import { Rating } from './rating';
 
-export interface BeachForecast extends Omit<Beach, 'user'>, ForecastPoint { }
+export interface BeachForecast extends Omit<Beach, 'user'>, ForecastPoint {}
 
 export interface TimeForecast {
   time: string;
@@ -22,7 +22,7 @@ export class Forecast {
   constructor(
     protected stormGlass = new StormGlass(),
     protected RatingService: typeof Rating = Rating
-  ) { }
+  ) {}
 
   public async processForecastForBeaches(
     beaches: Beach[]
@@ -32,7 +32,7 @@ export class Forecast {
       const timeForecast = this.mapForecastByTime(beachForecast);
       return timeForecast.map((t) => ({
         time: t.time,
-        forecast: _.orderBy(t.forecast, ['rating'], ['desc'])
+        forecast: _.orderBy(t.forecast, ['rating'], ['desc']),
       }));
     } catch (error) {
       logger.error(error);
