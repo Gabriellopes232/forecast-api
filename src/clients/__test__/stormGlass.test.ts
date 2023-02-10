@@ -14,7 +14,7 @@ describe('StormGlass client', () => {
     typeof HTTPUtil.Request
   >;
 
-  const MockedCacheUtil = CacheUtil as jest.Mocked<typeof CacheUtil>
+  const MockedCacheUtil = CacheUtil as jest.Mocked<typeof CacheUtil>;
 
   /**
    * Used for instance method's mocks
@@ -71,7 +71,6 @@ describe('StormGlass client', () => {
     const response = await stormGlass.fetchPoints(lat, lng);
     expect(response).toEqual(stormglassNormalizedResponseFixture);
   });
-
 
   it('should get a generic error from StormGlass service when the request fail before reaching the service', async () => {
     const lat = -33.792726;
