@@ -5,11 +5,11 @@ import {
   Middleware,
 } from '@overnightjs/core';
 import { Request, Response } from 'express';
-import { Beach } from '@src/models/beach';
 import { authMiddleware } from '@src/middlewares/auth';
 import { BaseController } from '.';
 import ApiError from '@src/util/errors/api-error';
 import rateLimit from 'express-rate-limit';
+import { BeachRepository } from '@src/repositories';
 
 const rateLimiter = rateLimit({
   windowMs: 1 * 60 * 1000,
@@ -30,12 +30,17 @@ const rateLimiter = rateLimit({
 @Controller('beaches')
 @ClassMiddleware(authMiddleware)
 export class BeachesController extends BaseController {
+  constructor(private beachRepository: BeachRepository) {
+    super();
+  }
   @Post('')
   @Middleware(rateLimiter)
   public async create(req: Request, res: Response): Promise<void> {
     try {
-      const beach = new Beach({ ...req.body, ...{ user: req.decoded?.id } });
-      const result = await beach.save();
+      const result = await this.beachRepository.create({
+        ...req.body,
+        ...{ user: req.decoded?.id },
+      });
       res.status(201).send(result);
     } catch (error) {
       this.sendCreateUpdateErrorResponse(res, error);
